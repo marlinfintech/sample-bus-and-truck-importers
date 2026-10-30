@@ -1,0 +1,47 @@
+html, body {height: 100%;width: 100%;margin: 0;font-size: 1rem;font-family: sans-serif;word-spacing: normal;line-height: 1;scroll-behavior: smooth;}
+
+body {background: #FFFFFF;overflow-x: hidden;display: grid;}
+
+.page-container {word-wrap: break-word;background: green;display: grid;gap: 0.125rem;width: 100%;}
+
+.page-header-title h3{color:#FFFFFF; text-align:center;}
+
+.page-header-intro p{text-align:center;color:#FFFFFF}
+
+.page-header-buttons{display:flex;gap:1rem;margin:0 auto;font-weight:bold;background:green}
+.page-header-buttons a{color:#FFFFFF}
+.electric-buses-button h5{background:#FFFFFF}
+.electric-buses-button a{color:#000000}
+
+.e-buses-list-item{display:grid;grid-template-rows:1fr 1fr 0.5fr;}
+
+.small-images-container{display: grid;grid-template: repeat(2, 1fr) / repeat(2, 1fr);}
+
+.list-text{display:grid;grid-template-rows:1fr 1fr 3fr;}
+
+.large-image-container {
+    width: 100%;
+}
+
+.e-buses-list-item-large-image {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.small-images-container {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 0.25rem;
+}
+
+.e-buses-list-item-small-image {
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+
+
