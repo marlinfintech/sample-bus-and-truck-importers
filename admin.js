@@ -8,7 +8,7 @@
 
 // Netlify Function endpoint. Replace with your deployed Netlify site URL.
 const NETLIFY_API =
-    "https:busandtruckimporters.netlify.app/.netlify/functions/github";
+    "https://busandtruckimporters.netlify.app/.netlify/functions/github";
 
 // The password is requested at runtime and kept only for this browser tab.
 function getAdminPassword() {
