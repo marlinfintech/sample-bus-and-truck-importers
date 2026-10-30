@@ -1,0 +1,27 @@
+{"e-buses-list" :[
+{
+"id":"e-bus001",
+"e-buses-list-item-large-image":"assets/1.jpeg",
+"e-buses-list-item-small-image1":"assets/2.jpeg",
+"e-buses-list-item-small-image2":"assets/3.jpeg",
+"e-buses-list-item-small-image3":"assets/4.jpeg",
+"e-buses-list-item-small-image4":"assets/5.jpeg",
+"e-buses-list-item-title":"Electric Bus 1",
+"e-buses-list-item-price":"$70,000",
+"e-buses-list-item-description":"Have a happy trip"
+
+},
+{
+"id":"e-bus002",
+"e-buses-list-item-large-image":"assets/6.jpeg",
+"e-buses-list-item-small-image1":"assets/7.jpeg",
+"e-buses-list-item-small-image2":"assets/8.jpeg",
+"e-buses-list-item-small-image3":"assets/9.jpeg",
+"e-buses-list-item-small-image4":"assets/10.jpeg",
+"e-buses-list-item-title":"Electric Bus 2",
+"e-buses-list-item-price":"$90,000",
+"e-buses-list-item-description":"Have a happy trip"
+
+}
+]
+}

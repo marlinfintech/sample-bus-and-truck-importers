@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Bus Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 16px;
+            font-family: Arial, sans-serif;
+            background: #f2f4f5;
+            color: #222;
+        }
+
+        .dashboard {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            color: #0078A2;
+        }
+
+        .panel {
+            background: white;
+            padding: 18px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            border: 0;
+            padding: 11px 16px;
+            margin: 12px 6px 0 0;
+            border-radius: 4px;
+            background: #0078A2;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button.secondary {
+            background: #555;
+        }
+
+        .listing {
+            border-top: 1px solid #ddd;
+            padding: 12px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .listing img, .preview img {
+            width: 85px;
+            height: 65px;
+            object-fit: cover;
+            margin: 5px 5px 0 0;
+        }
+
+        .preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .status {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            font-weight: bold;
+        }
+
+        .id-text {
+            color: #0078A2;
+            font-weight: bold;
+        }
+
+        .login-panel {
+            max-width: 420px;
+            margin: 10vh auto;
+            background: white;
+            padding: 22px;
+            border-radius: 8px;
+        }
+
+        .login-error {
+            color: #c62828;
+            font-weight: bold;
+            min-height: 20px;
+        }
+
+        #logoutButton {
+            float: right;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- LOGIN SECTION -->
+
+<div id="loginPanel" class="login-panel">
+
+    <h1>Admin Login</h1>
+
+    <p>Enter your password to access the dashboard.</p>
+
+    <form id="loginForm">
+
+        <label for="adminPassword">Password</label>
+
+        <input
+            id="adminPassword"
+            type="password"
+            autocomplete="off"
+            autocapitalize="none"
+    spellcheck="false"
+            required
+        >
+
+        <button type="submit">Log In</button>
+
+        <p
+            id="loginError"
+            class="login-error"
+            role="alert"
+        ></p>
+
+    </form>
+
+</div>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<div class="dashboard" id="adminDashboard" hidden>
+
+    <h1>
+        Electric Bus Dashboard
+
+        <button
+            type="button"
+            id="logoutButton"
+            class="secondary"
+        >
+            Log Out
+        </button>
+    </h1>
+
+
+    <!-- MANAGE LISTINGS -->
+
+    <div class="panel">
+
+        <h2>Manage Listings</h2>
+
+        <label for="existingBus">
+            Select a listing to edit
+        </label>
+
+        <select id="existingBus">
+
+            <option value="">Add a new listing</option>
+
+        </select>
+
+        <p>
+            Next available ID:
+            <strong id="nextId">Loading...</strong>
+        </p>
+
+        <button
+            type="button"
+            id="newButton"
+            class="secondary"
+        >
+            Add New Bus
+        </button>
+
+    </div>
+
+
+    <!-- BUS FORM -->
+
+    <form id="busForm" class="panel">
+
+        <h2 id="formHeading">Add a Bus Listing</h2>
+
+        <p id="currentId" class="id-text">
+            New listing
+        </p>
+
+
+        <label for="title">Bus title</label>
+
+        <input
+            id="title"
+            name="title"
+            type="text"
+            required
+        >
+
+
+        <label for="price">Price</label>
+
+        <input
+            id="price"
+            name="price"
+            type="text"
+            placeholder="e.g. KSh 7,000,000"
+        >
+
+
+        <label for="description">Description</label>
+
+        <textarea
+            id="description"
+            name="description"
+        ></textarea>
+
+
+        <h2>Images</h2>
+
+        <p>
+            Choose images from your phone.
+            Leave an image field empty when editing
+            to keep the current image.
+        </p>
+
+
+        <label for="largeImage">Large image</label>
+
+        <input
+            id="largeImage"
+            name="largeImage"
+            type="file"
+            accept="image/*"
+        >
+
+        <div
+            id="preview-largeImage"
+            class="preview"
+        ></div>
+
+
+        <label for="smallImage1">Small image 1</label>
+
+        <input
+            id="smallImage1"
+            name="smallImage1"
+            type="file"
+            accept="image/*"
+        >
+
+        <div
+            id="preview-smallImage1"
+            class="preview"
+        ></div>
+
+
+        <label for="smallImage2">Small image 2</label>
+
+        <input
+            id="smallImage2"
+            name="smallImage2"
+            type="file"
+            accept="image/*"
+        >
+
+        <div
+            id="preview-smallImage2"
+            class="preview"
+        ></div>
+
+
+        <label for="smallImage3">Small image 3</label>
+
+        <input
+            id="smallImage3"
+            name="smallImage3"
+            type="file"
+            accept="image/*"
+        >
+
+        <div
+            id="preview-smallImage3"
+            class="preview"
+        ></div>
+
+
+        <label for="smallImage4">Small image 4</label>
+
+        <input
+            id="smallImage4"
+            name="smallImage4"
+            type="file"
+            accept="image/*"
+        >
+
+        <div
+            id="preview-smallImage4"
+            class="preview"
+        ></div>
+
+
+        <button
+            type="submit"
+            id="saveButton"
+        >
+            Save New Listing
+        </button>
+
+        <button
+            type="button"
+            id="cancelButton"
+            class="secondary"
+        >
+            Clear Form
+        </button>
+
+        <p
+            id="status"
+            class="status"
+            role="status"
+        ></p>
+
+    </form>
+
+
+    <!-- EXISTING LISTINGS -->
+
+    <div class="panel">
+
+        <h2>Existing Bus Listings</h2>
+
+        <div id="listingList">
+            Loading listings...
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LOGIN AND LOGOUT JAVASCRIPT -->
+
+<script>
+
+(function () {
+
+    const ADMIN_PASSWORD = "30oct2026";
+
+    const SESSION_KEY = "busDashboardLoggedIn";
+
+    const loginPanel =
+        document.getElementById("loginPanel");
+
+    const dashboard =
+        document.getElementById("adminDashboard");
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    const passwordInput =
+        document.getElementById("adminPassword");
+
+    const loginError =
+        document.getElementById("loginError");
+
+    let adminScriptLoaded = false;
+
+
+    function openDashboard() {
+
+        loginPanel.hidden = true;
+
+        dashboard.hidden = false;
+
+
+        if (!adminScriptLoaded) {
+
+            adminScriptLoaded = true;
+
+            const script =
+                document.createElement("script");
+
+            script.src = "admin.js";
+
+            script.defer = true;
+
+            document.body.appendChild(script);
+
+        }
+
+    }
+
+
+    // Check whether the user is already logged in
+    // during this browser tab session.
+
+    if (
+        sessionStorage.getItem(SESSION_KEY) === "yes"
+    ) {
+
+        openDashboard();
+
+    }
+
+
+    // LOGIN
+
+    loginForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            if (
+                passwordInput.value === ADMIN_PASSWORD
+            ) {
+
+                sessionStorage.setItem(
+                    SESSION_KEY,
+                    "yes"
+                );
+
+                loginError.textContent = "";
+
+                openDashboard();
+
+            } else {
+
+                loginError.textContent =
+                    "Incorrect password. Please try again.";
+
+                passwordInput.value = "";
+
+                
+
+            }
+
+        }
+    );
+
+
+    // LOGOUT
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+
+            sessionStorage.removeItem(SESSION_KEY);
+
+            window.location.reload();
+
+        });
+
+
+})();
+
+</script>
+
+</body>
+</html>
