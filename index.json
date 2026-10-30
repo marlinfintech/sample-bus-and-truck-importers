@@ -21,6 +21,17 @@
       "e-buses-list-item-title": "Electric Bus 2",
       "e-buses-list-item-price": "$90,000",
       "e-buses-list-item-description": "Have a happy trip"
+    },
+    {
+      "id": "e-bus003",
+      "e-buses-list-item-title": "Electric Bus 3",
+      "e-buses-list-item-price": "$100,000",
+      "e-buses-list-item-description": "Have another happy trip!",
+      "e-buses-list-item-large-image": "assets/e-bus003_largeImage_1793394910258.jpeg",
+      "e-buses-list-item-small-image1": "assets/e-bus003_smallImage1_1793394913602.jpeg",
+      "e-buses-list-item-small-image2": "assets/e-bus003_smallImage2_1793394917120.jpeg",
+      "e-buses-list-item-small-image3": "assets/e-bus003_smallImage3_1793394920838.jpeg",
+      "e-buses-list-item-small-image4": "assets/e-bus003_smallImage4_1793394923999.jpeg"
     }
   ]
 }
